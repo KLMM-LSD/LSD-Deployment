@@ -7,7 +7,7 @@ A simple utility that goes through a predefined list of github usernames and add
 
 # Maintenance
 
-TODO
+Maintenance on this projects server is done by watching the downtime on the server and to see what the status of the operations are
 
 ## Downtime
 In case of downtime on the server go to "TBD" to see what the cause might be
