@@ -17,7 +17,7 @@ Run startDroplet.sh to start a digitalocean
 =======
 # Maintenance
 
-TODO
+Maintenance on this projects server is done by watching the downtime on the server and to see what the status of the operations are
 
 ## Downtime
 In case of downtime on the server go to "TBD" to see what the cause might be
