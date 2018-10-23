@@ -8,3 +8,8 @@ A simple utility that goes through a predefined list of github usernames and add
 # Maintenance
 
 TODO
+
+## Downtime
+
+
+## Operating status
