@@ -10,6 +10,7 @@ A simple utility that goes through a predefined list of github usernames and add
 TODO
 
 ## Downtime
-
+In case of downtime on the server go to "TBD" to see what the cause might be
 
 ## Operating status
+Too see the status on the operative system go to "TBD"
