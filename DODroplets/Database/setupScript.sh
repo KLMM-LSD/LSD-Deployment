@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #Description: This script installs docker and starts a mariadb instance.
 #Author: Kristjan Reinert Gásadal (Huldumadurin)
 
@@ -14,23 +15,20 @@ ssh-import-id gh:KongBoje gh:LasseHansenCPH gh:MartinH5 gh:Huldumadurin
 sudo ssh-import-id gh:pwestdk gh:Kvetter gh:LalaDK gh:philliphb
 
 #This is how DigitalOcean recommends Docker be installed.
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+# sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-sudo apt-get update
+#sudo apt-get update
 
-apt-cache policy docker-ce
+# apt-cache policy docker-ce
 
 #Output of apt-cache policy docker-ce
 
-sudo apt-get install -y docker-ce
+# sudo apt-get install -y docker-ce
 
 #check that docker service is running
-sudo systemctl status docker
-
-#Installing jq for querying JSON
-sudo apt-get install --yes jq
+# sudo systemctl status docker
 
 #Fetch public keys for organization
 #git clone git@github.com:KLMM-LSD/LSD-Deployment.git
@@ -42,7 +40,7 @@ sudo apt-get install --yes jq
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 git clone git@github.com:huldumadurin/KLMMDeployCredentials.git
 chmod +x KLMMDeployCredentials/db-credentials.sh
-source db-credentials.sh
+. db-credentials.sh
 
 #Start mariadb docker 
 #docker run --name my-mariadb -e MYSQL_ROOT_PASSWORD=$DBPASSWORD -d mariadb:latest > mariadb.log 2>&1
@@ -59,13 +57,15 @@ sudo apt-get -y upgrade
 sudo apt-get install -y mariadb-server
 
 echo "Changing MariaDB root password."
-mysql -e "UPDATE mysql.user SET Password = PASSWORD('$DBPASSWORD') WHERE User = 'root'"
-mysql -e "FLUSH PRIVILEGES"
-
-mysql -u root -p$DBPASSWORD -e "SELECT * FROM dbo.user;"
+sudo mysql -u root -p"" -e "UPDATE mysql.user SET Password = PASSWORD('$DBPASSWORD') WHERE User = 'root'"
+echo "Flushing MariaDB privileges"
+sudo mysql -u root -p"$DBPASSWORD" -e "FLUSH PRIVILEGES"
 
 #Installing JDK
 sudo apt-get install -y default-jre
+
+#Installing jq for querying JSON
+sudo apt-get install --yes jq
 
 
 #Deploying backend .war file:
@@ -84,8 +84,10 @@ tar -xvzf wildfly-10.0.0.Final.tar.gz
 mv wildfly-10.0.0.Final wildfly
 chmod -R 755 wildfly
 cd wildfly/bin
-./add-user.sh "$ADMINUSERNAME" "$ADMINPASSWORD"
-./standalone.sh > /vagrant/wildfly.log 2>&1 &
+
+echo "Adding user named $WILDFLYUSERNAME"
+./add-user.sh "$WILDFLYUSERNAME" "$WILDFLYPASSWORD"
+nohup ./standalone.sh -b 0.0.0.0 > /vagrant/wildfly.log 2>&1 &
 
 
 

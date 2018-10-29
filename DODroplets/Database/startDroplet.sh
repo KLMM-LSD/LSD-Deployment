@@ -8,4 +8,4 @@ echo "Running setupScript to provision droplet"
 vagrant ssh -c "echo 'Running setupScript.sh'
   cd /vagrant
   sudo chmod +x setupScript.sh
-  ./setupScript.sh"
+  bash setupScript.sh"
