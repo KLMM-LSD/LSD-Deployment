@@ -1,6 +1,7 @@
 #Description: This script installs docker and starts a mariadb instance.
 #Author: Kristjan Reinert Gásadal (Huldumadurin)
 
+#Pointless comment
 
 #Importing public keys from github, Developers
 sudo ssh-import-id gh:KongBoje gh:LasseHansenCPH gh:MartinH5 gh:Huldumadurin
