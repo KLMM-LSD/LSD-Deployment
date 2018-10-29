@@ -30,13 +30,4 @@ cat ~/.ssh/id_rsa.pub
 ssh -T git@github.com
 
 =======
-# Maintenance
-
-Maintenance on this projects server is done by watching the downtime on the server and to see what the status of the operations are
-
-## Downtime
-In case of downtime on the server go to "TBD" to see what the cause might be
-
-## Operating status
-Too see the status on the operative system go to "TBD"
 
