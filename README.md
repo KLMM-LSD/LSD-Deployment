@@ -11,10 +11,10 @@ A collection of scripts used to spin up the various nodes that make up Hackernew
 All require ssh and digitalocean authentication to be set up.
 
 ### Database
-Run startDroplet.sh to start a digitalocean 
+Run startDroplet.sh to start a digitalocean droplet
 
 ### SSH keys
-
+SSH public keys for all maintainers are automatically added to the droplet by our deploy script, so should be registered with your github account:
 
 #### This goes in ~/.bashrc
 eval "$(ssh-agent)";

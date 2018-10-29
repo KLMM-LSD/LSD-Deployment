@@ -13,9 +13,6 @@ restorecon -R -v /root/.ssh
 #Importing public keys from github, Operators (TODO: ADD USERNAMES!!!)
 #sudo ssh-import-id
 
-#Installing jq for querying JSON
-sudo apt-get install --yes jq
-
 #This is how DigitalOcean recommends Docker be installed.
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
@@ -31,6 +28,9 @@ sudo apt-get install -y docker-ce
 
 #check that docker service is running
 sudo systemctl status docker
+
+#Installing jq for querying JSON
+sudo apt-get install --yes jq
 
 #Fetch public keys for organization
 #git clone git@github.com:KLMM-LSD/LSD-Deployment.git
