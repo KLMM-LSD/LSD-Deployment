@@ -13,7 +13,22 @@ All require ssh and digitalocean authentication to be set up.
 ### Database
 Run startDroplet.sh to start a digitalocean 
 
-### 
+### SSH keys
+
+
+#### This goes in ~/.bashrc
+eval "$(ssh-agent)";
+ssh-add ~/.ssh/id_rsa;
+
+#### Run this:
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+#### Add output of this to your github account as ssh public key (give your machine a recognizable name)
+cat ~/.ssh/id_rsa.pub
+
+#### Test if setup correctly:
+ssh -T git@github.com
+
 =======
 # Maintenance
 
