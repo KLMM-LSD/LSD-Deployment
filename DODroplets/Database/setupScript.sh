@@ -1,8 +1,6 @@
 #Description: This script installs docker and starts a mariadb instance.
 #Author: Kristjan Reinert Gásadal (Huldumadurin)
 
-#Pointless comment
-
 #Importing public keys from github, Developers
 sudo ssh-import-id gh:KongBoje gh:LasseHansenCPH gh:MartinH5 gh:Huldumadurin
 #Importing public keys from github, Operators (TODO: ADD USERNAMES!!!)
@@ -38,3 +36,9 @@ source db-credentials.sh
 #Start mariadb docker 
 #docker run --name my-mariadb -e MYSQL_ROOT_PASSWORD=$DBPASSWORD -d mariadb:latest > mariadb.log 2>&1
 docker run --name my-mariadb -e MYSQL_ROOT_PASSWORD=$DBPASSWORD -d mariadb:latest
+
+#Start Wildfly docker
+mkdir /vagrant/deployments
+docker run -p 8080:8080 -p 9990:9990 -v /vagrant/deployments:/opt/jboss/wildfly/standalone/deployments/ -d jboss/wildfly /opt/jboss/wildfly/bin/standalone.sh -bmanagement 0.0.0.0
+#Download war files into deployments folder:
+cd /vagrant/deployments/
