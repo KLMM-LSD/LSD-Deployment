@@ -1,3 +1,3 @@
 source ~/.digitalocean.secret
 vagrant up
-setupScript.sh | vagrant ssh
+#setupScript.sh | vagrant ssh
